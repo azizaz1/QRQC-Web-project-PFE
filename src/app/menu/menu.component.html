@@ -1,0 +1,148 @@
+<body>
+  
+
+  <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
+    data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
+
+    <!-- Topbar header -->
+    <header class="topbar" data-navbarbg="skin5">
+      <nav class="navbar top-navbar navbar-expand-md navbar-dark">
+        <div class="navbar-header" data-logobg="skin5">
+          <a class="navbar-brand" href="index.html">
+            <b class="logo-icon ps-2">
+              <img src="assets/assets/images/visteon.png" alt="homepage" class="light-logo" width="60" />
+            </b>
+            <span class="logo-text ms-2">
+              <img src="assets/assets/images/logo-text.png" alt="homepage" class="light-logo" />
+            </span>
+          </a>
+          <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)">
+            <i class="ti-menu ti-close"></i>
+          </a>
+        </div>
+
+        <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item d-none d-lg-block">
+              <a class="nav-link sidebartoggler waves-effect waves-light" href="javascript:void(0)"
+                data-sidebartype="mini-sidebar">
+                <i class="mdi mdi-menu font-24"></i>
+              </a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link" href="charts.html" routerLink="/dashboard" routerLinkActive="active">
+                <i class="mdi mdi-chart-bar"></i>
+                <span class="hide-menu">PowerBi Report</span>
+              </a>
+            </li>
+              <!-- Inside user dropdown menu -->
+                <!-- Other menu items -->
+                 
+                  <!-- Add more menu items as needed -->
+              
+
+            
+            <li class="nav-item">
+              <a class="nav-link" href="charts.html" routerLink="/qrqc" routerLinkActive="active">
+                <i class="mdi mdi-chart-bar"></i>
+                <span class="hide-menu">QRQC</span>
+              </a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link" href="index.html" routerLink="/stages" routerLinkActive="active">
+                <i class="mdi mdi-file-document"></i>
+                <span class="hide-menu">Rapport d'incident</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="grid.html" routerLink="/emplois" routerLinkActive="active">
+                <i class="mdi mdi-blur-linear"></i>
+                <span class="hide-menu">8D</span>
+              </a>
+            </li>
+            <ul class="navbar-nav ms-auto">
+              <!-- Other menu items -->
+            </ul>
+            <li class="nav-item">
+              <a class="nav-link" href="charts.html" routerLink="/map" routerLinkActive="active">
+                <i class="mdi mdi-chart-bar"></i>
+                <span class="hide-menu">MAP</span>
+              </a>
+            </li>
+            
+            <!-- Add more menu items as needed -->
+          </ul>
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item dropdown">
+              
+              <ul class="dropdown-menu animated fadeIn" aria-labelledby="navbarDropdown">
+                <!-- Dropdown items here -->
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="2" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                <i class="font-24 mdi mdi-comment-processing"></i>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end mailbox animated bounceInDown" aria-labelledby="2">
+                <!-- Dropdown items here -->
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                <!-- Dropdown content -->
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link"  (click)="navigateToChangePassword()">
+                <i class="mdi mdi-account"></i>
+                <span class="hide-menu">{{ loggedInUsername }}</span>
+              </a>
+              <button class="btn btn-danger" (click)="logout()">Logout</button>
+            </li>
+            
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <!-- End Topbar header -->
+
+    <!-- Left Sidebar -->
+    <aside class="left-sidebar" data-sidebarbg="skin5">
+      <!-- Sidebar scroll-->
+      <div class="scroll-sidebar">
+        <!-- Sidebar navigation-->
+        <nav class="sidebar-nav">
+          <ul id="sidebarnav" class="pt-4">
+            <!-- Sidebar items here -->
+          </ul>
+        </nav>
+        <!-- End Sidebar navigation -->
+      </div>
+      <!-- End Sidebar scroll-->
+    </aside>
+    <!-- End Left Sidebar -->
+
+    <!-- Page wrapper -->
+    <div class="page-wrapper">
+      <!-- Page content -->
+      <div class="container-fluid">
+        <!-- menu.component.html -->
+        <!-- Router outlet for content -->
+        <router-outlet></router-outlet>
+
+        <!-- Place app-calendar here -->
+
+      </div>
+      <!-- End Page content -->
+    </div>
+    
+    <!-- End Page wrapper -->
+
+  </div>
+
+  <!-- All Jquery and other scripts -->
+</body>

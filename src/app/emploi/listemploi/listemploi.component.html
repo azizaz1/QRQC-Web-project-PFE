@@ -1,0 +1,85 @@
+<div class="container mt-4">
+    <h1 class="text-center mb-4">Liste des QRQC</h1>
+
+    <div class="d-flex justify-content-between mb-3">
+        <button class="btn btn-success" (click)="addEmploi()">
+            <i class="fa fa-plus-circle mr-2"></i> Ajouter 
+        </button>
+        <!-- Add PDF button here -->
+        <button class="btn btn-primary" (click)="generatePdf()">
+            <i class="fa fa-file-pdf mr-2"></i> Export PDF
+        </button>
+    </div>
+    <div class="d-flex justify-content-center align-items-center mb-3">
+        <!-- Start Date Input -->
+        <label for="startDate" class="mr-2">From:</label>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+            </div>
+            <input type="date" id="startDate" name="startDate" [(ngModel)]="startDate" class="form-control"
+                (change)="searchByDateRange()">
+        </div>
+    
+        <!-- End Date Input -->
+        <label for="endDate" class="ml-2 mr-2">To:</label>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+            </div>
+            <input type="date" id="endDate" name="endDate" [(ngModel)]="endDate" class="form-control"
+                (change)="searchByDateRange()">
+        </div>
+    </div>
+    
+    <div class="d-flex mb-3">
+        <input type="text" [(ngModel)]="searchQuery" (input)="search()" class="form-control form-control-sm" placeholder="Rechercher">
+    </div>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Nom Prenom</th>
+                    <th>Responsable</th>
+                    <th>Date</th>
+                    <th>Produit</th>
+                    <th>Ref</th>
+                    <th>Tracabilite</th>
+                    <th>Problem Description</th>
+                    <th>Quantite Isolé</th>
+                    <th>Nbr Piece Defaut</th>
+                    <th>Niveau</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <ng-container *ngFor="let item of filteredItems; let i = index">
+                    <tr [ngClass]="{ 'table-primary': i % 2 === 0, 'table-secondary': i % 2 !== 0 }">  
+                                          <td>{{ item.id }}</td>
+                    <td>{{ item.nomPrenom }}</td>
+                    <td>{{ item.responsable }}</td>
+                    <td>{{ item.date }}</td>
+                    <td>{{ item.produit }}</td>
+                    <td>{{ item.ref }}</td>
+                    <td>{{ item.tracabilite }}</td>
+                    <td>{{ item.problemDescription }}</td>
+                    <td>{{ item.quantiteisole }}</td>
+                    <td>{{ item.nbrPieceDefaut }}</td>
+                    <td>{{ item.niveau }}</td>
+                    <td>
+                        <td>
+                            <button class="btn btn-warning btn-sm" (click)="selectData(item)">
+                                <i class="fas fa-pencil-alt"></i>
+                            </button>
+                            <button class="btn btn-danger btn-sm ml-2" (click)="removeData(item.id)">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+                        </td>
+                    
+                </tr>
+            </ng-container>
+            </tbody>
+        </table>
+    </div>
+</div>
