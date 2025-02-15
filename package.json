@@ -1,0 +1,85 @@
+{
+  "name": "stagy",
+  "version": "0.0.0",
+  "main": "src/app/electron/main.js",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve --proxy-config proxy.conf.json",
+    "build": "ng build --configuration production",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e",
+    "electron:serve": "npm run build && electron .",
+    "electron:build": "electron-builder",
+    "prebuild-electron": "copy package.json dist\\",
+    "build-electron": "npm run prebuild-electron && electron-packager ./dist my-angular-app --platform=win32 --arch=x64 --out=dist --overwrite --ignore=node_modules"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "^17.3.12",
+    "@angular/cdk": "^16.2.14",
+    "@angular/common": "^17.3.12",
+    "@angular/compiler": "^17.3.12",
+    "@angular/core": "^17.3.12",
+    "@angular/forms": "^17.3.12",
+    "@angular/google-maps": "^17.3.10",
+    "@angular/material": "^16.2.14",
+    "@angular/platform-browser": "^17.3.12",
+    "@angular/platform-browser-dynamic": "^17.3.12",
+    "@angular/router": "^17.3.12",
+    "@asymmetrik/ngx-leaflet": "^17.0.0",
+    "@fullcalendar/angular": "^6.1.10",
+    "@fullcalendar/core": "^6.1.11",
+    "@fullcalendar/daygrid": "^6.1.11",
+    "@fullcalendar/timegrid": "^6.1.11",
+    "angular-calendar": "^0.31.1",
+    "chart.js": "^4.4.2",
+    "date-fns": "^3.6.0",
+    "emailjs-com": "^3.2.0",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^2.5.1",
+    "ngx-cookie-service": "^17.1.0",
+    "ngx-toastr": "^17.0.2",
+    "pdfmake": "^0.2.7",
+    "powerbi-client": "^2.23.1",
+    "powerbi-client-angular": "^3.0.5",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.14.10"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^17.3.11",
+    "@angular/cli": "~17.3.11",
+    "@angular/compiler-cli": "^17.3.12",
+    "@types/chart.js": "^2.9.41",
+    "@types/jasmine": "~4.3.0",
+    "@types/pdfmake": "^0.2.2",
+    "daypilot-pro-angular": "^0.0.0",
+    "electron": "^31.2.1",
+    "electron-builder": "^24.13.3",
+    "electron-packager": "^17.1.2",
+    "jasmine-core": "~4.6.0",
+    "karma": "~6.4.0",
+    "karma-chrome-launcher": "~3.2.0",
+    "karma-coverage": "~2.2.0",
+    "karma-jasmine": "~5.1.0",
+    "karma-jasmine-html-reporter": "~2.1.0",
+    "typescript": "~5.4.5"
+  },
+  "build": {
+    "appId": "com.example.app",
+    "productName": "MyAngularApp",
+    "files": [
+      "dist/**/*",
+      "node_modules/**/*",
+      "src/**/*",
+      "package.json"
+    ],
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": "nsis"
+    }
+  }
+}

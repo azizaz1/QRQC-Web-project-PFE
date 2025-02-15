@@ -1,0 +1,471 @@
+<div class="container-fluid">
+  <h1 class="text-center mb-4">8D</h1>
+  <div class="container-fluid">
+    <div>
+      <label for="stageId"> Select Report ID:</label>
+      <select [formControl]="stageIdControl">
+        <option *ngFor="let stage of stages" [value]="stage.id">{{ stage.id }}</option>
+      </select>
+    </div>
+    
+  <mat-tab-group>
+    <mat-tab label="D1" color="primary" id="tab-d1">
+      <form [formGroup]="formDataTabs[0]" (ngSubmit)="onSubmit()">
+        <input type="hidden" formControlName="id" id="d1_id">
+       
+    
+      
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="d1_nomPrenom">Nom Emploi</label>
+            <input type="text" class="form-control" formControlName="nomPrenom" id="d1_nomPrenom" placeholder="Nom Prenom">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="d1_responsable">Responsable</label>
+            <input type="text" class="form-control" formControlName="responsable" id="d1_responsable" placeholder="Responsable">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="d1_date">Date</label>
+            <input type="date" class="form-control" formControlName="date" id="d1_date">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="d1_produit">Produit</label>
+            <input type="text" class="form-control" formControlName="produit" id="d1_produit" placeholder="Produit">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="d1_ref">Référence</label>
+            <input type="text" class="form-control" formControlName="ref" id="d1_ref" placeholder="Référence">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="d1_tracabilite">Tracabilité</label>
+            <input type="text" class="form-control" formControlName="tracabilite" id="d1_tracabilite" placeholder="Tracabilité">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="d1_problemDescription">Description du Problème</label>
+          <input type="text" class="form-control" formControlName="problemDescription" id="d1_problemDescription" placeholder="Description du Problème">
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="d1_quantiteisole">Quantité Isolée</label>
+            <input type="number" class="form-control" formControlName="quantiteisole" id="d1_quantiteisole" placeholder="Quantité Isolée">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="d1_nbrPieceDefaut">Nombre de Pièces Défectueuses</label>
+            <input type="number" class="form-control" formControlName="nbrPieceDefaut" id="d1_nbrPieceDefaut" placeholder="Nombre de Pièces Défectueuses">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="d1_niveau">Niveau</label>
+            <input type="text" class="form-control" formControlName="niveau" id="d1_niveau" placeholder="Niveau">
+          </div>
+        </div>
+        <!-- Add more form elements as needed -->
+        <button type="submit" mat-raised-button color="primary">Submit</button>
+      </form>
+    </mat-tab>
+    <!-- Add more mat-tabs for other form sections if needed -->
+  
+    <mat-tab label="D2" color="accent" id="tab-d2" >
+      <form [formGroup]="formDataTabs[1]" (ngSubmit)="onSubmit()">
+        
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="d2_quoi">Quoi</label>
+            <input type="text" class="form-control" formControlName="quoi" id="d2_quoi" placeholder="Quoi">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="d2_qui">Qui</label>
+            <input type="text" class="form-control" formControlName="qui" id="d2_qui" placeholder="Qui">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="d2_combien">Combien</label>
+            <input type="text" class="form-control" formControlName="combien" id="d2_combien" placeholder="Combien">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="d2_quand">Quand</label>
+            <input type="text" class="form-control" formControlName="quand" id="d2_quand">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="d2_qu">Qu</label>
+            <input type="text" class="form-control" formControlName="qu" id="d2_qu" placeholder="Qu">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="d2_comment">Comment</label>
+            <input type="text" class="form-control" formControlName="comment" id="d2_comment" placeholder="Comment">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="d2_pourquoi">Pourquoi</label>
+          <input type="text" class="form-control" formControlName="pourquoi" id="d2_pourquoi" placeholder="Pourquoi">
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-dark"><i class="fa fa-database"></i> Enregistrer</button>
+          <button type="button" class="btn btn-outline-dark ml-1" (click)="lister()"><i class="fa fa-list"></i> Liste Emplois</button>
+        </div>
+      </form>
+    </mat-tab>
+    
+    <mat-tab label="D3" color="warn" id="tab-d3">
+      <div class="horizontal-title">
+        <h2>Isolation Produit finis</h2>
+      </div>
+    
+      <form [formGroup]="formDataTabs[2]" (ngSubmit)="onSubmit()" class="horizontal-form">
+        <div class="form-group">
+          <label class="horizontal-label" for="isolationEmplacement">Isolation Emplacement</label>
+          <input type="text" class="form-control small-input" formControlName="isolationEmplacement" id="isolationEmplacement">
+        </div>
+        <div class="form-group">
+          <label class="horizontal-label" for="isolationDetails">Isolation Details</label>
+          <input type="text" class="form-control form-control-sm" formControlName="isolationDetails" id="isolationDetails">
+        </div>
+        <div class="form-group">
+          <label class="horizontal-label" for="isolationDate">Isolation Date</label>
+          <input type="date" class="form-control small-input" formControlName="isolationDate" id="isolationDate">
+        </div>
+        <div class="form-group">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" formControlName="isolationOuiNon" id="isolationOuiNon">
+            <label class="form-check-label horizontal-label" for="isolationOuiNon">Isolation Oui/Non</label>
+          </div>
+        </div>
+        <!-- Add other form fields for Isolation Produit finis here -->
+      </form>
+    
+      <div class="horizontal-title">
+        <h2>Repassage de la pièce par ligne</h2>
+      </div>
+    
+      <form [formGroup]="formDataTabs[2]" (ngSubmit)="onSubmit()" class="horizontal-form">
+        <div class="form-group">
+          <label class="horizontal-label" for="repassageEmplacement">Repassage Emplacement</label>
+          <input type="text" class="form-control small-input" formControlName="repassageEmplacement" id="repassageEmplacement">
+        </div>
+        <div class="form-group">
+          <label class="horizontal-label" for="repassageDetails">Repassage Details</label>
+          <input type="text" class="form-control small-input" formControlName="repassageDetails" id="repassageDetails">
+        </div>
+        <div class="form-group">
+          <label class="horizontal-label" for="repassageDate">Repassage Date</label>
+          <input type="date" class="form-control small-input" formControlName="repassageDate" id="repassageDate">
+        </div>
+        <div class="form-group">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" formControlName="repassageOuiNon" id="repassageOuiNon">
+            <label class="form-check-label horizontal-label" for="repassageOuiNon">Repassage Oui/Non</label>
+          </div>
+        </div>
+        <!-- Add other form fields for Repassage here -->
+      </form>
+    
+      <div class="horizontal-title">
+        <h2>Alerte Equipe Process</h2>
+      </div>
+    
+      <form [formGroup]="formDataTabs[2]" (ngSubmit)="onSubmit()" class="horizontal-form">
+        <div class="form-group">
+          <label class="horizontal-label" for="alerteProcessEmplacement">Alerte Process Emplacement</label>
+          <input type="text" class="form-control small-input" formControlName="alerteProcessEmplacement" id="alerteProcessEmplacement">
+        </div>
+        <div class="form-group">
+          <label class="horizontal-label" for="alerteProcessDetails">Alerte Process Details</label>
+          <input type="text" class="form-control small-input" formControlName="alerteProcessDetails" id="alerteProcessDetails">
+        </div>
+        <div class="form-group">
+          <label class="horizontal-label" for="alerteProcessDate">Alerte Process Date</label>
+          <input type="date" class="form-control small-input" formControlName="alerteProcessDate" id="alerteProcessDate">
+        </div>
+        <div class="form-group">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" formControlName="alerteProcessOuiNon" id="alerteProcessOuiNon">
+            <label class="form-check-label horizontal-label" for="alerteProcessOuiNon">Alerte Process Oui/Non</label>
+          </div>
+        </div>
+        <!-- Add other form fields for Alerte Equipe Process here -->
+      </form>
+    
+      <div class="horizontal-title">
+        <h2>Alerte Equipe Maintenance</h2>
+      </div>
+    
+      <form [formGroup]="formDataTabs[2]" (ngSubmit)="onSubmit()" class="horizontal-form">
+        <div class="form-group">
+          <label class="horizontal-label" for="alerteMaintenanceEmplacement">Alerte Maintenance Emplacement</label>
+          <input type="text" class="form-control small-input" formControlName="alerteMaintenanceEmplacement" id="alerteMaintenanceEmplacement">
+        </div>
+        <div class="form-group">
+          <label class="horizontal-label" for="alerteMaintenanceDetails">Alerte Maintenance Details</label>
+          <input type="text" class="form-control small-input" formControlName="alerteMaintenanceDetails" id="alerteMaintenanceDetails">
+        </div>
+        <div class="form-group">
+          <label class="horizontal-label" for="alerteMaintenanceDate">Alerte Maintenance Date</label>
+          <input type="date" class="form-control small-input" formControlName="alerteMaintenanceDate" id="alerteMaintenanceDate">
+        </div>
+        <div class="form-group">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" formControlName="alerteMaintenanceOuiNon" id="alerteMaintenanceOuiNon">
+            <label class="form-check-label horizontal-label" for="alerteMaintenanceOuiNon">Alerte Maintenance Oui/Non</label>
+          </div>
+        </div>
+        <!-- Add other form fields for Alerte Equipe Maintenance here -->
+      </form>
+    
+      <div class="horizontal-title">
+        <h2>Alerte Fournisseur</h2>
+      </div>
+    
+      <form [formGroup]="formDataTabs[2]" (ngSubmit)="onSubmit()" class="horizontal-form">
+        <div class="form-group">
+          <label class="horizontal-label" for="alerteFournisseurEmplacement">Alerte Fournisseur Emplacement</label>
+          <input type="text" class="form-control small-input" formControlName="alerteFournisseurEmplacement" id="alerteFournisseurEmplacement">
+        </div>
+        <div class="form-group">
+          <label class="horizontal-label" for="alerteFournisseurDetails">Alerte Fournisseur Details</label>
+          <input type="text" class="form-control small-input" formControlName="alerteFournisseurDetails" id="alerteFournisseurDetails">
+        </div>
+        <div class="form-group">
+          <label class="horizontal-label" for="alerteFournisseurDate">Alerte Fournisseur Date</label>
+          <input type="date" class="form-control small-input" formControlName="alerteFournisseurDate" id="alerteFournisseurDate">
+        </div>
+        <div class="form-group">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" formControlName="alerteFournisseurOuiNon" id="alerteFournisseurOuiNon">
+            <label class="form-check-label horizontal-label" for="alerteFournisseurOuiNon">Alerte Fournisseur Oui/Non</label>
+          </div>
+        </div>
+        <!-- Add other form fields for Alerte Fournisseur here -->
+      </form>
+    
+      <div class="horizontal-title">
+        <h2>Changement lot de matière première</h2>
+      </div>
+    
+      <form [formGroup]="formDataTabs[2]" (ngSubmit)="onSubmit()" class="horizontal-form">
+        <div class="form-group">
+          <label class="horizontal-label" for="changementLotEmplacement">Changement Lot Emplacement</label>
+          <input type="text" class="form-control small-input" formControlName="changementLotEmplacement" id="changementLotEmplacement">
+        </div>
+        <div class="form-group">
+          <label class="horizontal-label" for="changementLotDetails">Changement Lot Details</label>
+          <input type="text" class="form-control small-input" formControlName="changementLotDetails" id="changementLotDetails">
+        </div>
+        <div class="form-group">
+          <label class="horizontal-label" for="changementLotDate">Changement Lot Date</label>
+          <input type="date" class="form-control small-input" formControlName="changementLotDate" id="changementLotDate">
+        </div>
+        <div class="form-group">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" formControlName="changementLotOuiNon" id="changementLotOuiNon">
+            <label class="form-check-label horizontal-label" for="changementLotOuiNon">Changement Lot Oui/Non</label>
+          </div>
+        </div>
+        <!-- Add other form fields for Changement lot de matière première here -->
+      </form>
+    
+      <div class="horizontal-title">
+        <h2>DTC ouvert</h2>
+      </div>
+    
+      <form [formGroup]="formDataTabs[2]" (ngSubmit)="onSubmit()" class="horizontal-form">
+        <div class="form-group">
+          <label class="horizontal-label" for="dtcOuvertEmplacement">DTC Ouvert Emplacement</label>
+          <input type="text" class="form-control small-input" formControlName="dtcOuvertEmplacement" id="dtcOuvertEmplacement">
+        </div>
+        <div class="form-group">
+          <label class="horizontal-label" for="dtcOuvertDetails">DTC Ouvert Details</label>
+          <input type="text" class="form-control small-input" formControlName="dtcOuvertDetails" id="dtcOuvertDetails">
+        </div>
+        <div class="form-group">
+          <label class="horizontal-label" for="dtcOuvertDate">DTC Ouvert Date</label>
+          <input type="date" class="form-control small-input" formControlName="dtcOuvertDate" id="dtcOuvertDate">
+        </div>
+        <div class="form-group">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" formControlName="dtcOuvertOuiNon" id="dtcOuvertOuiNon">
+            <label class="form-check-label horizontal-label" for="dtcOuvertOuiNon">DTC Ouvert Oui/Non</label>
+          </div>
+        </div>
+        <!-- Add other form fields for DTC ouvert here -->
+      </form>
+      <form [formGroup]="formDataTabs[2]" (ngSubmit)="onSubmit()" class="horizontal-form">
+        <div class="form-group">
+          <label class="horizontal-label" for="traitementAlerteDetails">Traitement Alerte Details</label>
+          <input type="text" class="form-control small-input" formControlName="traitementAlerteDetails" id="traitementAlerteDetails">
+        </div>
+        <div class="form-group">
+          <label class="horizontal-label" for="traitementAlerteDate">Traitement Alerte Date</label>
+          <input type="date" class="form-control small-input" formControlName="traitementAlerteDate" id="traitementAlerteDate">
+        </div>
+        <div class="form-group">
+          <label class="horizontal-label" for="traitementAlerteDetails2">Traitement Alerte Details 2</label>
+          <input type="text" class="form-control small-input" formControlName="traitementAlerteDetails2" id="traitementAlerteDetails2">
+        </div>
+        <!-- Add other form fields for traitementAlerte here -->
+      </form>
+      
+    </mat-tab>
+    <mat-tab label="D4" color="accent" id="tab-d4">
+      <form [formGroup]="formDataTabs[3]" (ngSubmit)="onSubmit()" class="vertical-form">
+          <div class="container mt-4">
+              <h1 class="text-center mb-4">Attributs D4</h1>
+  
+              <div class="table-responsive">
+                  <table class="table table-bordered table-striped">
+                      <thead class="thead-dark">
+                          <tr>
+                              <th>5 Pourquoi</th>
+                              <th>P1</th>
+                              <th>P2</th>
+                              <th>P3</th>
+                              <th>P4</th>
+                              <th>P5</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr class="table-primary">
+                              <td class="attribute">Cause de Non-Detection</td>
+                              <td><input type="text" class="form-control" formControlName="p1CauseNonDetection" id="p1CauseNonDetection"></td>
+                              <td><input type="text" class="form-control" formControlName="p2CauseNonDetection" id="p2CauseNonDetection"></td>
+                              <td><input type="text" class="form-control" formControlName="p3CauseNonDetection" id="p3CauseNonDetection"></td>
+                              <td><input type="text" class="form-control" formControlName="p4CauseNonDetection" id="p4CauseNonDetection"></td>
+                              <td><input type="text" class="form-control" formControlName="p5CauseNonDetection" id="p5CauseNonDetection"></td>
+                          </tr>
+                          <tr class="table-secondary">
+                              <td class="attribute">Cause de l'Occurrence</td>
+                              <td><input type="text" class="form-control" formControlName="p1CauseOccurrence" id="p1CauseOccurrence"></td>
+                              <td><input type="text" class="form-control" formControlName="p2CauseOccurrence" id="p2CauseOccurrence"></td>
+                              <td><input type="text" class="form-control" formControlName="p3CauseOccurrence" id="p3CauseOccurrence"></td>
+                              <td><input type="text" class="form-control" formControlName="p4CauseOccurrence" id="p4CauseOccurrence"></td>
+                              <td><input type="text" class="form-control" formControlName="p5CauseOccurrence" id="p5CauseOccurrence"></td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+              <div class="form-group">
+                  <button type="submit" class="btn btn-dark"><i class="fa fa-database"></i> Enregistrer</button>
+                  <button type="button" class="btn btn-outline-dark ml-1" (click)="lister()"><i class="fa fa-list"></i> Liste Emplois</button>
+              </div>
+          </div>
+      </form>
+  </mat-tab>
+  <mat-tab label="D5" color="accent" id="tab-d5">
+    <form [formGroup]="formDataTabs[4]" (ngSubmit)="onSubmit()" class="vertical-form">
+        <div class="container mt-4">
+            <h1 class="text-center mb-4">Actions</h1>
+  
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Actions</th>
+                            <th>Corrective</th>
+                            <th>Préventive</th>
+                            <th>Action Clôturée</th>
+                            <th>Pilote</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="table-primary">
+                            <td class="attribute"><input type="text" class="form-control" formControlName="actions1" id="actions1"></td>
+                            <td><input type="text" class="form-control" formControlName="corrective1" id="corrective1"></td>
+                            <td><input type="text" class="form-control" formControlName="preventive1" id="preventive1"></td>
+                            <td><input type="checkbox" class="form-check-input" formControlName="actionCloturee1" id="actionCloturee1"></td>
+                            <td><input type="text" class="form-control" formControlName="pilote1" id="pilote1"></td>
+                        </tr>
+                        <tr class="table-secondary">
+                            <td class="attribute"><input type="text" class="form-control" formControlName="actions2" id="actions2"></td>
+                            <td><input type="text" class="form-control" formControlName="corrective2" id="corrective2"></td>
+                            <td><input type="text" class="form-control" formControlName="preventive2" id="preventive2"></td>
+                            <td><input type="checkbox" class="form-check-input" formControlName="actionCloturee2" id="actionCloturee2"></td>
+                            <td><input type="text" class="form-control" formControlName="pilote2" id="pilote2"></td>
+                        </tr>
+                        <tr class="table-primary">
+                            <td class="attribute"><input type="text" class="form-control" formControlName="actions3" id="actions3"></td>
+                            <td><input type="text" class="form-control" formControlName="corrective3" id="corrective3"></td>
+                            <td><input type="text" class="form-control" formControlName="preventive3" id="preventive3"></td>
+                            <td><input type="checkbox" class="form-check-input" formControlName="actionCloturee3" id="actionCloturee3"></td>
+                            <td><input type="text" class="form-control" formControlName="pilote3" id="pilote3"></td>
+                        </tr>
+                        <tr class="table-secondary">
+                            <td class="attribute"><input type="text" class="form-control" formControlName="actions4" id="actions4"></td>
+                            <td><input type="text" class="form-control" formControlName="corrective4" id="corrective4"></td>
+                            <td><input type="text" class="form-control" formControlName="preventive4" id="preventive4"></td>
+                            <td><input type="checkbox" class="form-check-input" formControlName="actionCloturee4" id="actionCloturee4"></td>
+                            <td><input type="text" class="form-control" formControlName="pilote4" id="pilote4"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+           
+        </div>
+
+    </form>
+  </mat-tab>
+  
+  <mat-tab label="D6" color="warn" id="tab-d6">
+    <form [formGroup]="formDataTabs[5]" (ngSubmit)="onSubmit()" class="vertical-form">
+      <div class="container mt-4">
+        <h1 class="text-center mb-4">D6 Form</h1>
+  
+        <!-- Add your form fields for D6 here --> 
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="quantiteProduitAvant">Quantité Produit Avant</label>
+            <input type="number" class="form-control" formControlName="quantiteProduitAvant" id="quantiteProduitAvant" placeholder="Quantité Produit Avant">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="quantiteDefectueuseAvant">Quantité Défectueuse Avant</label>
+            <input type="number" class="form-control" formControlName="quantiteDefectueuseAvant" id="quantiteDefectueuseAvant" placeholder="Quantité Défectueuse Avant">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="quantiteProduitApres">Quantité Produit Après</label>
+            <input type="number" class="form-control" formControlName="quantiteProduitApres" id="quantiteProduitApres" placeholder="Quantité Produit Après">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="quantiteDefectueuseApres">Quantité Défectueuse Après</label>
+            <input type="number" class="form-control" formControlName="quantiteDefectueuseApres" id="quantiteDefectueuseApres" placeholder="Quantité Défectueuse Après">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="cloturisationPourcentage">0.5 est le % de cloturisation</label>
+          <input type="text" class="form-control" formControlName="cloturisationPourcentage" id="cloturisationPourcentage" placeholder="Clôture Pourcentage">
+        </div>
+        <div class="form-group">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" formControlName="qrqcNonCloture" id="qrqcNonCloture">
+            <label class="form-check-label" for="qrqcNonCloture">QRQC Non Clôture</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" formControlName="qrqcNonEscalade" id="qrqcNonEscalade">
+            <label class="form-check-label" for="qrqcNonEscalade">QRQC Non Escalade</label>
+          </div>
+        </div>
+        <!-- End of D6 form fields -->
+        <div class="form-group">
+          <button type="submit" class="btn btn-dark"><i class="fa fa-database"></i> Enregistrer</button>
+          <button type="button" class="btn btn-outline-dark ml-1" (click)="lister()"><i class="fa fa-list"></i> Liste Emplois</button>
+        </div>
+      </div>
+    </form>
+  </mat-tab>
+  
+    
+    <!-- Include other tabs (D4, D5, etc.) similarly -->
+    
+   
+    <mat-tab label="D7" color="primary">LESSON LEARNED</mat-tab>
+    <mat-tab label="D8" color="accent"></mat-tab>
+  </mat-tab-group>
+</div>
