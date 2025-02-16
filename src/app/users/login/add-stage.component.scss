@@ -1,0 +1,72 @@
+/* Add this CSS to your styles.css or the component's CSS file */
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+.auth-wrapper {
+  position: relative;
+  height: 100vh; /* Full viewport height */
+  width: 100%; /* Full width */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+#bgVideo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -1;
+  transform: translate(-50%, -50%);
+  background-size: cover;
+}
+
+.login-container {
+  background: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+  z-index: 1; /* Ensure the form is above the video */
+}
+
+input.form-control {
+  border-radius: 0.25rem;
+  transition: all 0.3s ease;
+}
+
+input.form-control:focus {
+  box-shadow: 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+button.btn {
+  transition: all 0.3s ease;
+}
+
+button.btn:hover {
+  transform: scale(1.05);
+}
+
+.text-center img {
+  width: 150px;
+  margin-bottom: 1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+  .login-container {
+    padding: 1rem;
+  }
+
+  .text-center img {
+    width: 100px;
+  }
+}

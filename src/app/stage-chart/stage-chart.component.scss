@@ -1,0 +1,13 @@
+/* Container for the chart */
+.chart-container {
+    position: relative;
+    width: 100%;
+    height: 400px; /* Adjust the height as needed */
+  }
+  
+  /* Style the canvas element */
+  #stageChart {
+    width: 100%;
+    height: 100%;
+  }
+  

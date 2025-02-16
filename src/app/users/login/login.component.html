@@ -1,0 +1,49 @@
+<div class="auth-wrapper">
+  <video autoplay muted loop id="bgVideo">
+    <source src="assets/background.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+  </video>
+  <div class="login-container">
+    <div class="text-center pt-3 pb-3">
+      <span class="db"><img src="assets/assets/images/visteon.png" alt="logo" /></span>
+    </div>
+    <!-- Form -->
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text bg-success text-white h-100" id="basic-addon1">
+            <i class="mdi mdi-account fs-4"></i>
+          </span>
+        </div>
+        <input type="text" class="form-control form-control-lg" placeholder="Username" formControlName="username" required />
+        <div *ngIf="loginForm.get('username')!.errors?.['required']" class="text-danger">
+          Username is required
+        </div>
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text bg-warning text-white h-100" id="basic-addon2">
+            <i class="mdi mdi-lock fs-4"></i>
+          </span>
+        </div>
+        <input type="password" class="form-control form-control-lg" placeholder="Password" formControlName="password" required />
+        <div *ngIf="loginForm.get('password')!.errors?.['required']" class="text-danger">
+          Password is required
+        </div>
+      </div>
+      <div class="row border-top border-secondary">
+        <div class="col-12">
+          <div class="form-group pt-3">
+            <button class="btn btn-info" type="button" (click)="register()">
+              <i class="mdi mdi-lock fs-4 me-1"></i> Register Here
+            </button>
+            <button class="btn btn-success float-end" type="submit">Login</button>
+            <div *ngIf="loginError" class="text-danger">
+              <p>{{ loginError }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
